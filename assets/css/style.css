@@ -11,7 +11,10 @@
     --yellow: #f2f08b;
     --greyblue: #5488ac;
   }
-  
+  ::selection {
+    background-color: var(--greyblue);
+    color: var(--mutedgreen);
+  }
 
 /* Header
 ----------------------*/
@@ -131,9 +134,36 @@ section2 {
     color: var(--ireland);
     ;
 }
+section3 {
+  margin-bottom: 0.625rem;
+color: var(--heliotrope);
+font-weight: 700;
+line-height: 1.1;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-left: -1.5rem;
+  margin-right: -1.5rem;
+
+}
+.justify-center {
+  justify-content: center;
+}
+
+.card-column {
+  flex: 1 0 100%;
+  padding: 1.5rem;
+  /* when the screen resizes, make it so our columns don't jump in size */
+  transition: flex-basis 500ms linear;
+  margin-bottom: 1.5rem;
+}
 
 
- 
+
+
 /* Footer---------------
 */
 
@@ -181,6 +211,19 @@ footer a{
     text-decoration: none;
 }
 
+ /* using a mobile-first approach, use `min-width` values going from narrow -> wide for a responsive design */
+ @media screen and (min-width: 768px) {
+  /* on tablets, set columns to only be 50% of the width and not grow */
+  .card-column {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  /* select the last child to grow to full width if it has space to grow */
+  .card-column:first-child {
+    flex-grow: 1;
+  }
+}
 
   
   @media screen and (max-width: 768px) {
